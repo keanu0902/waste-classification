@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Waste Classification</title>
+</head>
+<body>
+    <h1>AI Waste Classification System</h1>
+    <p>請上傳一張垃圾圖片，讓 AI 判斷分類。</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">開始分類</button>
+    </form>
+
+    {% if result %}
+        <h2>辨識結果：{{ result }}</h2>
+
+        {% if confidence is not none %}
+            <p>模型信心分數：{{ "%.2f"|format(confidence) }}%</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
